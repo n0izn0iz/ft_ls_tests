@@ -1,6 +1,15 @@
+# Partie obligatoire
 -1
--1 tests
--1R tests
--1l tests
--1a tests
--1t tests
+-1r
+-1t
+-1l
+-1R
+-a
+-1artlR
+# Partie bonus
+--
+-u
+-f
+-g
+-d
+-S

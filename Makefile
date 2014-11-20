@@ -1,5 +1,5 @@
 FTLS=ft_ls
-FTLSDIR=../ft_ls
+FTLSDIR=../repo
 
 all: tests
 

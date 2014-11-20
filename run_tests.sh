@@ -1,21 +1,22 @@
 #!/bin/sh
 TESTFILE=testslist
+TESTDIR=tests
 OLDIFS=$IFS
 IFS=$'\n'
 declare -i total=0
 declare -i failed=0
 echo "STARTING TESTS" | tee results
-echo "" | tee results
-for line in $(<$TESTFILE)
+echo "" | tee -a results
+for line in $(grep -v '^#' $TESTFILE)
 do
 	total=$(( total + 1))
 	echo "----> lslog$total" > logs/lslog$total
 	echo "----> ftlslog$total" > logs/ftlslog$total
 	echo "[TEST$total] \"ls $line\"" | tee -a results logs/lslog$total logs/ftlslog$total
-	script "logs/lslog$total" -aqc "ls $line" > /dev/null
-	script "logs/ftlslog$total" -aqc "./ft_ls $line" > /dev/null
-	sed -n '4,$p' "logs/lslog$total" > logs/lstmp
-	sed -n '4,$p' "logs/ftlslog$total" > logs/ftlstmp
+	script -aq "logs/lslog$total" "ls" "$line" "$TESTDIR" > /dev/null
+	script -aq "logs/ftlslog$total" "./ft_ls" "$line" "$TESTDIR" > /dev/null
+	sed -n '3,$p' "logs/lslog$total" > logs/lstmp
+	sed -n '3,$p' "logs/ftlslog$total" >  logs/ftlstmp
 	DIFF=$(diff "logs/lstmp" "logs/ftlstmp")
 	if [ "$DIFF" != "" ]
 	then
