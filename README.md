@@ -1,7 +1,7 @@
 ft_ls_tests
 ===========
 
-HOW TO:
+-- HOW TO:
 
 -Clone this in the directory that contains you repo (not in the actual repo)
 if your repo is not named ft_ls, rename it or change the FTLSDIR variable in the makefile.
@@ -17,7 +17,7 @@ The makefile will run make in your ft_ls repo, copy the binaries and run the run
 The results file contains the diff of each failed tests, the log files contains the output from the tests.
 To check a particular test run "cat logs/*log1" (replace 1 by the number of the test you wish to check).
 
-COMMENT CA MARCHE:
+-- COMMENT CA MARCHE:
 
 -Clonez dans le repertoire qui contient votre dépot (et non pas directement dans votre dépot)
 si votre dépot ne s'apelle pas ft_ls, renomez le ou changez la variable FTLSDIR dans le makefile
