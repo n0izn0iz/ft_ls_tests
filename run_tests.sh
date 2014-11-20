@@ -6,12 +6,11 @@ IFS=$'\n'
 declare -i total=0
 declare -i failed=0
 echo "STARTING TESTS" | tee results
-#echo "" | tee -a results
 for line in $(grep -v '^#' $TESTFILE)
 do
 	echo "----> lslog$total" > logs/lslog$total
 	echo "----> ftlslog$total" > logs/ftlslog$total
-	echo "[TEST$total] \"ls $line\"" | tee -a results logs/lslog$total logs/ftlslog$total
+	echo "[TEST$total] \"ls $line $TESTDIR\"" | tee -a results logs/lslog$total logs/ftlslog$total
 	script -aq "logs/lslog$total" "ls" "$line" "$TESTDIR" > /dev/null
 	script -aq "logs/ftlslog$total" "./ft_ls" "$line" "$TESTDIR" > /dev/null
 	sed -n '3,$p' "logs/lslog$total" > logs/lstmp
@@ -25,7 +24,6 @@ do
 	else
 		echo "[\033[032mPASS\033[0m]" | tee -a results
 	fi
-	#echo "" | tee -a results
 	total=$(( total + 1))
 done
 if [ $failed != 0 ]
