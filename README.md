@@ -14,6 +14,9 @@ The testslist file contains one test per line, you can add yours there. Line beg
 
 The makefile will run make in your ft_ls repo, copy the binaries and run the run_tests.sh script
 
+The results file contains the diff of each failed tests, the log files contains the output from the tests.
+To check a particular test run "cat logs/*log1" (replace 1 by the number of the test you wish to check).
+
 COMMENT CA MARCHE:
 
 -Clonez dans le repertoire qui contient votre dépot (et non pas directement dans votre dépot)
@@ -26,3 +29,6 @@ Vous pouvez preciser un dossier de test dans le script run_tests.sh grace a la v
 Le fichier testslist contient un test par ligne, vous pouvez ajouter les votres dedans. Les lignes commencant par # ne sont pas prise en compte.
 
 Le makefile va apeller make dans votre dépot, copier le fichier binaire et lancer le script run_tests.sh.
+
+Le fichier results contient le diff de chaque test raté, les fichiers log contiennent la sortie des tests.
+Pour verifier un test en particulier faites "cat logs/*log1" (Remplacer 1 par le numero du test concerné).
