@@ -5,6 +5,7 @@ HOW TO:
 
 -Clone this in the directory that contains you repo (not in the actual repo)
 if your repo is not named ft_ls, rename it or change the FTLSDIR variable in the makefile.
+
 -Run make
 
 You can specify a test directory in the run_tests.sh script with the TESTDIR variable
@@ -15,6 +16,7 @@ COMMENT CA MARCHE:
 
 -Clonez dans le repertoire qui contient votre dépot (et non pas directement dans votre dépot)
 si votre dépot ne s'apelle pas ft_ls, renomez le ou changez la variable FTLSDIR dans le makefile
+
 -Executez make
 
 Vous pouvez preciser un dossier de test dans le script run_tests.sh grace a la variable TESTDIR
