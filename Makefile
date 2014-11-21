@@ -7,7 +7,7 @@ tests: $(FTLS)
 	./run_tests.sh
 
 $(FTLS): $(FTLSDIR)
-	$(MAKE) -C $(FTLSDIR)
+	$(MAKE) re -C $(FTLSDIR)
 	cp $(FTLSDIR)/$(FTLS) .
 
 clean:
