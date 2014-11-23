@@ -6,6 +6,9 @@ all: tests
 tests: $(FTLS)
 	./run_tests.sh
 
+testgen: tests_generator.c
+	gcc -o $@ -Wall -Wextra -Werror $^
+
 $(FTLS): $(FTLSDIR)
 	$(MAKE) re -C $(FTLSDIR)
 	cp $(FTLSDIR)/$(FTLS) .
