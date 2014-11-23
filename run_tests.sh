@@ -1,6 +1,8 @@
 #!/bin/sh
-TESTFILE=testslist
+TESTFILE=oblig
 TESTDIR=tests
+COLUMNS=false
+NO_ONE=false
 OLDIFS=$IFS
 IFS=$'\n'
 declare -i total=0
@@ -11,8 +13,19 @@ do
 	echo "----> lslog$total" > logs/lslog$total
 	echo "----> ftlslog$total" > logs/ftlslog$total
 	echo "[TEST$total] \"ls $line $TESTDIR\"" | tee -a results logs/lslog$total logs/ftlslog$total
-	script -aq "logs/lslog$total" "ls" "$line" "$TESTDIR" > /dev/null
-	script -aq "logs/ftlslog$total" "./ft_ls" "$line" "$TESTDIR" > /dev/null
+	if [ "$COLUMNS" = "true" ]
+	then
+		script -aq "logs/lslog$total" "ls" "$line" "$TESTDIR" > /dev/null
+		script -aq "logs/ftlslog$total" "./ft_ls" "$line" "$TESTDIR" > /dev/null
+	else
+		script -aq "logs/lslog$total" "ls" "-1" "$line" "$TESTDIR" > /dev/null
+		if [ "$NO_ONE" = "true" ]
+		then
+			script -aq "logs/ftlslog$total" "./ft_ls" "$line" "$TESTDIR" > /dev/null
+		else
+			script -aq "logs/ftlslog$total" "./ft_ls" "-1" "$line" "$TESTDIR" > /dev/null
+		fi
+	fi
 	sed -n '3,$p' "logs/lslog$total" > logs/lstmp
 	sed -n '3,$p' "logs/ftlslog$total" >  logs/ftlstmp
 	DIFF=$(diff "logs/lstmp" "logs/ftlstmp")
