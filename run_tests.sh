@@ -1,8 +1,8 @@
 #!/bin/sh
-TESTFILE=oblig
+TESTFILE=testslist
 TESTDIR=tests
 COLUMNS=false
-NO_ONE=false
+NO_ONE=true
 OLDIFS=$IFS
 IFS=$'\n'
 declare -i total=0
